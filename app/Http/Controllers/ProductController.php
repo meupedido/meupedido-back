@@ -33,4 +33,8 @@ class ProductController extends Controller
     {
         return $this->productService->updateProduct($id, $request);
     }
+
+    public function delete($id){
+        return $this->productService->deleteProduct($id);
+    }
 }

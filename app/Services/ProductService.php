@@ -78,4 +78,21 @@ class ProductService
             Response::HTTP_OK
         );
     }
+
+    public function deleteProduct($id)
+    {
+        $product = $this->productRepository->getProductById($id);
+
+        if(!$product){
+            return response()->json(
+                [
+                    'message' => 'Produto não encontrado',
+                    'status_code' => Response::HTTP_NOT_FOUND,
+                ],
+                Response::HTTP_NOT_FOUND
+            );
+        }
+
+        return $this->productRepository->delete($id);
+    }
 }

@@ -51,4 +51,11 @@ class ProductRepository implements ProductRepositoryInterface
         ]);
 
     }
+
+    public function delete(int $id)
+    {
+        $product = $this->model->find($id);
+        
+        return $product->delete();
+    }
 }

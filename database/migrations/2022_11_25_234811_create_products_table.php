@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('observation');
             $table->text('path_img');
-            $table->decimal('price');
+            $table->float('price');
             $table->foreignId('company_id')->constrained();
             $table->timestamps();
         });
