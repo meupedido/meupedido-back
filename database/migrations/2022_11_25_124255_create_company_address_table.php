@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('companies_address', function (Blueprint $table) {
             $table->id();
             $table->text('street');
+            $table->text('number');
             $table->text('district');
             $table->text('city');
             $table->text('state');

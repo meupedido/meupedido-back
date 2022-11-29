@@ -13,6 +13,7 @@ class CompanyAddress extends Model
     
     protected $fillable = [
         'street',
+        'number',
         'district',
         'city',
         'state',
