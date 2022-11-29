@@ -23,7 +23,7 @@ class CompanyRepository implements CompanyRepositoryInterface{
     {
         return $this->model->where('id', $id)
         ->with('address')
-        ->get();
+        ->first();
     }
 
 }
