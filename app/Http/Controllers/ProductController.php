@@ -14,6 +14,11 @@ class ProductController extends Controller
         $this->productService = $productService;
     }
 
+    public function getProducts($company_id)
+    {
+        return $this->productService->getProducts($company_id);
+    }
+
     public function getProductById($id)
     {
         return $this->productService->getProductById($id);

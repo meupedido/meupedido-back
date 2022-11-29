@@ -14,6 +14,11 @@ class ProductService
       $this->productRepository = $productRepository;  
     }
 
+    public function getProducts($company_id)
+    {
+        return $this->productRepository->getProducts($company_id);
+    }
+
     public function getProductById($product_id)
     {
         $product = $this->productRepository->getProductById($product_id);
