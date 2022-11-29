@@ -26,4 +26,9 @@ class Company extends Model
     {
         return $this->hasOne(CompanyAddress::class, 'company_id');
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'company_id');
+    }
 }
