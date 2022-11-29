@@ -15,6 +15,8 @@ class Company extends Model
         'phone',
         'whatsapp',
         'payment_methods',
+        'minimum_order',
+        'delivery_fee',
         'status',
         'opening_hours',
         'closing_hours',

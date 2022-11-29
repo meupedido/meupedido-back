@@ -21,6 +21,8 @@ class CompanyFactory extends Factory
             'email' => $this->faker->email(),
             'phone' => $this->faker->phoneNumber(),
             'whatsapp' => $this->faker->phoneNumber(),
+            'minimum_order' => 25,
+            'delivery_fee' => 5,
         ];
     }
 }

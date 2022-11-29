@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('phone');
             $table->string('whatsapp');
             $table->string('payment_methods');
+            $table->decimal('minimum_order');
+            $table->decimal('delivery_fee');
             $table->enum('status', ['open', 'closed'])->default('open');
             $table->time('opening_hours');
             $table->time('closing_hours');
