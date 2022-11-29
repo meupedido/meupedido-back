@@ -16,7 +16,7 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function getProductById(int $id)
     {
-        return $this->model->findOrFail($id);
+        return $this->model->where('id', $id)->first();
     }
 
     public function createProduct(int $company_id, $body)
@@ -31,5 +31,19 @@ class ProductRepository implements ProductRepositoryInterface
         ]);
 
         return $product;
+    }
+
+    public function updateProduct(int $id, $body)
+    {
+        $product = $this->model->findOrFail($id);
+
+        return $product->update([
+            'name' => $body['name'],
+            'description' => $body['description'],
+            'observation' => $body['observation'],
+            'path_img' => $body['path_img'],
+            'price' => $body['price'],
+        ]);
+
     }
 }

@@ -17,8 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
+            $table->string('phone');
+            $table->string('whatsapp');
             $table->string('payment_methods');
+            $table->enum('status', ['open', 'closed'])->default('open');
             $table->time('opening_hours');
+            $table->time('closing_hours');
             $table->timestamps();
         });
     }

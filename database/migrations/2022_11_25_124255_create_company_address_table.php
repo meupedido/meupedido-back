@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('city');
             $table->text('state');
             $table->text('cep');
-            $table->foreignId('company_id')->constrained();
+            $table->foreignId('company_id')->constrained('companies');
             $table->timestamps();
         });
     }

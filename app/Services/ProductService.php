@@ -18,6 +18,16 @@ class ProductService
     {
         $product = $this->productRepository->getProductById($product_id);
 
+        if(!$product){
+            return response()->json(
+                [
+                    'message' => 'Produto não encontrado',
+                    'status_code' => Response::HTTP_NOT_FOUND,
+                ],
+                Response::HTTP_NOT_FOUND
+            );
+        }
+
         return response()->json(
             [
                 'data' => $product,
@@ -36,6 +46,31 @@ class ProductService
                 'status_code' => Response::HTTP_CREATED,
             ],
             Response::HTTP_CREATED
+        );
+    }
+
+    public function updateProduct($id, $body)
+    {
+        $product = $this->productRepository->getProductById($id, $body);
+
+        if(!$product){
+            return response()->json(
+                [
+                    'message' => 'Produto não encontrado',
+                    'status_code' => Response::HTTP_NOT_FOUND,
+                ],
+                Response::HTTP_NOT_FOUND
+            );
+        }
+
+        $this->productRepository->updateProduct($id, $body);
+
+        return response()->json(
+            [
+                'message' => 'Produto atualizado com sucesso!',
+                'status_code' => Response::HTTP_OK,
+            ],
+            Response::HTTP_OK
         );
     }
 }

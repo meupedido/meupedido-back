@@ -9,6 +9,8 @@ class CompanyAddress extends Model
 {
     use HasFactory;
 
+    protected $table = 'companies_address';
+    
     protected $fillable = [
         'street',
         'district',

@@ -21,7 +21,9 @@ class CompanyRepository implements CompanyRepositoryInterface{
 
     public function getCompanyById(int $id)
     {
-        return $this->model->findOrFail($id);
+        return $this->model->where('id', $id)
+        ->with('address')
+        ->get();
     }
 
 }

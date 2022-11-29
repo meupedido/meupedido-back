@@ -12,8 +12,16 @@ class Company extends Model
     protected $fillable = [
         'name',
         'email',
+        'phone',
+        'whatsapp',
         'payment_methods',
-        'address_id',
+        'status',
         'opening_hours',
+        'closing_hours',
     ];
+
+    public function address()
+    {
+        return $this->hasOne(CompanyAddress::class, 'company_id');
+    }
 }
