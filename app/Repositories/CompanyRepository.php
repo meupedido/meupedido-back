@@ -34,6 +34,7 @@ class CompanyRepository implements CompanyRepositoryInterface{
         ->join('products', 'products.company_id', '=', 'companies.id')
         ->join('categories_products', 'products.category_id', '=', 'categories_products.id')
         ->select('categories_products.id', 'categories_products.description')
+        ->distinct()
         ->where('companies.id', $id)
         ->get();
     }
