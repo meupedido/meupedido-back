@@ -22,4 +22,9 @@ class CompanyController extends Controller
     public function getCompanyById($id){
         return $this->companyService->getCompanyById($id);
     }
+
+    public function getCategories($id)
+    {
+        return $this->companyService->getCategories($id);
+    }
 }

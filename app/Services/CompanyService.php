@@ -19,4 +19,9 @@ class CompanyService {
     public function getCompanyById($id){
         return $this->companyRepository->getCompanyById($id);
     }
+
+    public function getCategories($id)
+    {
+        return $this->companyRepository->getCategories($id);
+    }
 }

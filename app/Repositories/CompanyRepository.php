@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\CompanyRepositoryInterface;
 use App\Models\Company;
+use Illuminate\Support\Facades\DB;
 
 class CompanyRepository implements CompanyRepositoryInterface{
     
@@ -27,4 +28,13 @@ class CompanyRepository implements CompanyRepositoryInterface{
         ->first();
     }
 
+    public function getCategories($id)
+    {
+        return DB::table('companies')
+        ->join('products', 'products.company_id', '=', 'companies.id')
+        ->join('categories_products', 'products.category_id', '=', 'categories_products.id')
+        ->select('categories_products.id', 'categories_products.description')
+        ->where('companies.id', $id)
+        ->get();
+    }
 }
