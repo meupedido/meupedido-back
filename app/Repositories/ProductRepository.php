@@ -18,7 +18,9 @@ class ProductRepository implements ProductRepositoryInterface
     public function getProducts(int $company_id)
     {
 
-        return $this->model->where('company_id', $company_id)->get();
+        return $this->model->where('company_id', $company_id)
+        ->with('category')
+        ->get();
     }
 
     public function getProductById(int $id)
