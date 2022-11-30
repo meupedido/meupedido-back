@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\ProductRepositoryInterface;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class ProductRepository implements ProductRepositoryInterface
 {
@@ -16,12 +17,13 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function getProducts(int $company_id)
     {
+
         return $this->model->where('company_id', $company_id)->get();
     }
 
     public function getProductById(int $id)
     {
-        return $this->model->where('id', $id)->first();
+        return $this->model->where('id', $id)->with('category')->first();
     }
 
     public function createProduct(int $company_id, $body)

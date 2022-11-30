@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('path_img');
             $table->float('price');
             $table->foreignId('company_id')->constrained();
+            $table->foreignId('category_id')->constrained('categories_products');
             $table->timestamps();
         });
     }

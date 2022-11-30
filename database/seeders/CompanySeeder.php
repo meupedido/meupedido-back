@@ -28,6 +28,7 @@ class CompanySeeder extends Seeder
             ]);
             Product::factory()->count(2)->create([
                 'company_id' => $company->id,
+                'category_id' => $company->id,
             ]);
         });
     }
