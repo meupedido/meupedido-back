@@ -28,6 +28,15 @@ class ProductRepository implements ProductRepositoryInterface
         return $this->model->where('id', $id)->with('category')->first();
     }
 
+    public function getProductsByCategory(int $company_id)
+    {
+        return DB::table('products')
+        ->join('companies', 'products.company_id', '=', 'companies.id')
+        ->select('products.*')
+        ->where('companies.id', $company_id)
+        ->get();
+    }
+
     public function createProduct(int $company_id, $body)
     {
         $product = $this->model->create([
@@ -37,6 +46,7 @@ class ProductRepository implements ProductRepositoryInterface
             'path_img' => $body['path_img'],
             'price' => $body['price'],
             'company_id' => $company_id,
+            'category_id' => $body['category_id'],
         ]);
 
         return $product;

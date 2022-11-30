@@ -42,6 +42,17 @@ class ProductService
         );
     }
 
+    public function getProductsByCategory($company_id, $category_id)
+    {
+        $products = $this->productRepository->getProductsByCategory($company_id);
+
+        $filter_products = array_filter(json_decode($products), function ($product) use ($category_id) {
+            return $product->category_id == $category_id;
+        });
+        
+        return $filter_products;
+    }
+
     public function createProduct($company_id, $body){
         $result = $this->productRepository->createProduct($company_id, $body);
 
