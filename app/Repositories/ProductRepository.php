@@ -45,6 +45,8 @@ class ProductRepository implements ProductRepositoryInterface
             'observation' => $body['observation'],
             'path_img' => $body['path_img'],
             'price' => $body['price'],
+            'on_sale' => $body['on_sale'],
+            'is_avaliable' => $body['is_avaliable'],
             'company_id' => $company_id,
             'category_id' => $body['category_id'],
         ]);
@@ -62,6 +64,8 @@ class ProductRepository implements ProductRepositoryInterface
             'observation' => $body['observation'],
             'path_img' => $body['path_img'],
             'price' => $body['price'],
+            'on_sale' => $body['on_sale'],
+            'is_avaliable' => $body['is_avaliable'],
         ]);
 
     }
@@ -69,7 +73,7 @@ class ProductRepository implements ProductRepositoryInterface
     public function delete(int $id)
     {
         $product = $this->model->find($id);
-        
+
         return $product->delete();
     }
 }

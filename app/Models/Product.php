@@ -15,6 +15,8 @@ class Product extends Model
         'observation',
         'path_img',
         'price',
+        'on_sale',
+        'is_avaliable',
         'company_id',
         'category_id',
     ];
