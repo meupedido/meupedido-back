@@ -24,7 +24,9 @@ class CompanyRepository implements CompanyRepositoryInterface{
     {
         return $this->model->where('id', $id)
         ->with('address')
-        ->with('products')
+        ->with(['products' => function ($query) {
+            $query->orderby('on_sale', 'desc');
+        }])
         ->first();
     }
 
@@ -44,8 +46,8 @@ class CompanyRepository implements CompanyRepositoryInterface{
         return $this->model->create($body);
     }
 
-    public function updateCompany($id)
+    public function updateCompany($id, $body)
     {
-        
+        return $body;
     }
 }
