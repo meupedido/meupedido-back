@@ -48,6 +48,19 @@ class CompanyRepository implements CompanyRepositoryInterface{
 
     public function updateCompany($id, $body)
     {
-        return $body;
+        $company = $this->model->find($id);
+
+        return $company->update([
+            'name' => $body['name'],
+            'email' => $body['email'],
+            'phone' => $body['phone'],
+            'whatsapp' => $body['whatsapp'],
+            'payment_methods' => $body['payment_methods'],
+            'minimum_order' => $body['minimum_order'],
+            'delivery_fee' => $body['delivery_fee'],
+            'status' => $body['status'],
+            'opening_hours' => $body['opening_hours'],
+            'closing_hours' => $body['closing_hours'],
+        ]);
     }
 }

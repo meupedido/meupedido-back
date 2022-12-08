@@ -44,8 +44,8 @@ class CompanyService {
         ); 
     }
 
-    public function updateCompany($id)
+    public function updateCompany($id, $body)
     {
-        
+        return $this->companyRepository->updateCompany($id, $body);
     }
 }

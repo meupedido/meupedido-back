@@ -35,4 +35,9 @@ class CompanyController extends Controller
         
         return $this->companyService->createCompany($validate);
     }
+
+    public function updateCompany($company_id, StoreCompanyRequest $request)
+    {
+        return $this->companyService->updateCompany($company_id, $request);
+    }
 }
