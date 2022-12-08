@@ -20,8 +20,8 @@ return new class extends Migration
             $table->text('observation');
             $table->text('path_img');
             $table->float('price');
-            $table->boolean('on_sale');
-            $table->boolean('is_avaliable');
+            $table->boolean('on_sale')->default(false);
+            $table->boolean('is_avaliable')->default(true);
             $table->foreignId('company_id')->constrained();
             $table->foreignId('category_id')->constrained('categories_products');
             $table->timestamps();

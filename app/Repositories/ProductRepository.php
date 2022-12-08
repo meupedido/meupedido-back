@@ -20,6 +20,7 @@ class ProductRepository implements ProductRepositoryInterface
 
         return $this->model->where('company_id', $company_id)
         ->with('category')
+        ->orderby('on_sale', 'desc')
         ->get();
     }
 
