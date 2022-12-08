@@ -51,9 +51,9 @@ class CompanyService {
         return response()->json(
             [
                 'message' => 'success',
-                'status_code' => Response::HTTP_CREATED,
+                'status_code' => Response::HTTP_OK,
             ],
-            Response::HTTP_CREATED
+            Response::HTTP_OK
         );
     }
     public function updateAddress($address_id, $body)
@@ -63,9 +63,9 @@ class CompanyService {
         return response()->json(
             [
                 'message' => 'success',
-                'status_code' => Response::HTTP_CREATED,
+                'status_code' => Response::HTTP_OK,
             ],
-            Response::HTTP_CREATED
+            Response::HTTP_OK
         );
     }
 }
