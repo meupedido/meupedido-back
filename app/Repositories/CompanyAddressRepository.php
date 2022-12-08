@@ -27,4 +27,18 @@ class CompanyAddressRepository implements CompanyAddressRepositoryInterface
         ]);
     }
 
+    public function updateAddress($address_id, $body)
+    {
+        $address = $this->model->find($address_id);
+
+        return $address->update([
+            "street" => $body['street'],
+            "number" => $body['number'],
+            "district" => $body['district'],
+            "city" => $body['city'],
+            "state" => $body['state'],
+            "cep" => $body['cep']
+        ]);
+    }
+
 }

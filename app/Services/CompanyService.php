@@ -8,12 +8,12 @@ use Illuminate\Http\Response;
 
 class CompanyService {
     private $companyRepository;
-    private $company_address_model;
+    private $company_address_repository;
 
-    public function __construct(CompanyRepository $companyRepository, CompanyAddressRepository $company_address_model)
+    public function __construct(CompanyRepository $companyRepository, CompanyAddressRepository $company_address_repository)
     {
         $this->companyRepository = $companyRepository;
-        $this->company_address_model = $company_address_model;
+        $this->company_address_repository = $company_address_repository;
     }
 
     public function getAllCompany(){
@@ -46,6 +46,26 @@ class CompanyService {
 
     public function updateCompany($id, $body)
     {
-        return $this->companyRepository->updateCompany($id, $body);
+        $this->companyRepository->updateCompany($id, $body);
+
+        return response()->json(
+            [
+                'message' => 'success',
+                'status_code' => Response::HTTP_CREATED,
+            ],
+            Response::HTTP_CREATED
+        );
+    }
+    public function updateAddress($address_id, $body)
+    {
+        $this->company_address_repository->updateAddress($address_id, $body);
+
+        return response()->json(
+            [
+                'message' => 'success',
+                'status_code' => Response::HTTP_CREATED,
+            ],
+            Response::HTTP_CREATED
+        );
     }
 }
