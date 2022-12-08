@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCompanyRequest;
 use Illuminate\Http\Request;
 use App\Services\CompanyService;
 
@@ -26,5 +27,12 @@ class CompanyController extends Controller
     public function getCategories($id)
     {
         return $this->companyService->getCategories($id);
+    }
+
+    public function createCompany(StoreCompanyRequest $request)
+    {
+        $validate = $request->validated();
+        
+        return $this->companyService->createCompany($validate);
     }
 }

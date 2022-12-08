@@ -38,4 +38,14 @@ class CompanyRepository implements CompanyRepositoryInterface{
         ->where('companies.id', $id)
         ->get();
     }
+
+    public function createCompany(array $body)
+    {
+        return $this->model->create($body);
+    }
+
+    public function updateCompany($id)
+    {
+        
+    }
 }

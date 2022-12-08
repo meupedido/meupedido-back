@@ -2,14 +2,18 @@
 
 namespace App\Services;
 
+use App\Repositories\CompanyAddressRepository;
 use App\Repositories\CompanyRepository;
+use Illuminate\Http\Response;
 
 class CompanyService {
     private $companyRepository;
+    private $company_address_model;
 
-    public function __construct(CompanyRepository $companyRepository)
+    public function __construct(CompanyRepository $companyRepository, CompanyAddressRepository $company_address_model)
     {
-        $this->companyRepository = $companyRepository;    
+        $this->companyRepository = $companyRepository;
+        $this->company_address_model = $company_address_model;
     }
 
     public function getAllCompany(){
@@ -23,5 +27,25 @@ class CompanyService {
     public function getCategories($id)
     {
         return $this->companyRepository->getCategories($id);
+    }
+
+    public function createCompany($body)
+    {
+        $company = $this->companyRepository->createCompany($body);
+
+        $this->company_address_model->createAddress($body, $company->id);
+
+        return response()->json(
+            [
+                'message' => 'success',
+                'status_code' => Response::HTTP_CREATED,
+            ],
+            Response::HTTP_CREATED
+        ); 
+    }
+
+    public function updateCompany($id)
+    {
+        
     }
 }
