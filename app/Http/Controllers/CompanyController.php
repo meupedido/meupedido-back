@@ -34,7 +34,7 @@ class CompanyController extends Controller
     public function createCompany(StoreCompanyRequest $request)
     {
         $validate = $request->validated();
-        
+
         return $this->companyService->createCompany($validate);
     }
 
