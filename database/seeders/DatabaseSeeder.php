@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             [
                 CategoryProductSeeder::class,
                 CompanySeeder::class,
+                LineOfBusinessSeeder::class,
             ]
         );
     }
