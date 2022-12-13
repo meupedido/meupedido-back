@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('city');
             $table->text('state');
             $table->text('cep');
+            $table->text('point_of_reference')->nullable();
             $table->foreignId('company_id')->constrained('companies');
             $table->timestamps();
         });

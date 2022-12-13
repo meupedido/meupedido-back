@@ -33,7 +33,7 @@ class CompanyService {
     {
         $company = $this->companyRepository->createCompany($body);
 
-        $this->company_address_model->createAddress($body, $company->id);
+        $this->company_address_repository->createAddress($body, $company->id);
 
         return response()->json(
             [

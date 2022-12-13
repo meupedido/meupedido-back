@@ -18,6 +18,7 @@ class CompanyAddress extends Model
         'city',
         'state',
         'cep',
+        'point_of_reference',
         'company_id',
     ];
 }

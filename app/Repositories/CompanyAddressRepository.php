@@ -37,7 +37,8 @@ class CompanyAddressRepository implements CompanyAddressRepositoryInterface
             "district" => $body['district'],
             "city" => $body['city'],
             "state" => $body['state'],
-            "cep" => $body['cep']
+            "cep" => $body['cep'],
+            "point_of_reference" => $body['point_of_reference'],
         ]);
     }
 

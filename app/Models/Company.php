@@ -20,7 +20,7 @@ class Company extends Model
         'status',
         'opening_hours',
         'closing_hours',
-        'branch',
+        'branch_id',
     ];
 
     public function address()

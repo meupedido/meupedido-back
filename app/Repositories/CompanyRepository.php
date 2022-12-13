@@ -61,6 +61,7 @@ class CompanyRepository implements CompanyRepositoryInterface{
             'status' => $body['status'],
             'opening_hours' => $body['opening_hours'],
             'closing_hours' => $body['closing_hours'],
+            'closing_hours' => $body['branch_id'],
         ]);
     }
 }

@@ -25,7 +25,7 @@ return new class extends Migration
             $table->enum('status', ['open', 'closed'])->default('open');
             $table->time('opening_hours');
             $table->time('closing_hours');
-            $table->string('branch');
+            $table->foreignId('branch_id')->constrained('line_of_business');
             $table->timestamps();
         });
     }

@@ -35,6 +35,7 @@ class StoreCompanyRequest extends FormRequest
             'delivery_fee' => ['required'],
             'opening_hours' => ['required'],
             'closing_hours' => ['required'],
+            'branch_id' => ['required'],
             'street' => ['required'],
             'number' => ['required'],
             'district' => ['required'],

@@ -22,7 +22,6 @@ class CompanySeeder extends Seeder
             'payment_methods' => 'dinheiro, pix, cartao',
             'opening_hours' => Carbon::createFromTimeString('18:00:00'),
             'closing_hours' => Carbon::createFromTimeString('23:00:00'),
-            'branch' => 'Alimentos e Bebidas',
         ])->each( function ($company) {
             CompanyAddress::factory()->create([
                 'company_id' => $company->id,
