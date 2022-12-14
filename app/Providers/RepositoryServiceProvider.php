@@ -19,6 +19,8 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(CompanyRepositoryInterface::class, CompanyRepository::class);
         $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
+        $this->app->bind(CategoryProductRepositoryInterface::class, CategoryProductRepository::class);
+        $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
     }
 
     /**
