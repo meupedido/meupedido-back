@@ -22,7 +22,7 @@ return new class extends Migration
             $table->float('price');
             $table->boolean('on_sale')->default(false);
             $table->boolean('is_avaliable')->default(true);
-            $table->foreignId('company_id')->constrained();
+            $table->foreignId('company_id')->constrained('companies');
             $table->foreignId('category_id')->constrained('categories_products');
             $table->timestamps();
         });

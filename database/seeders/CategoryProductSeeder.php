@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -16,15 +15,29 @@ class CategoryProductSeeder extends Seeder
     public function run()
     {
         $categories = [
-            'doces',
-            'salgados',
-            'japonês',
-            'congelados',
+            [
+                'name' => 'doces',
+                'branch_id' => 1,
+            ],
+            [
+                'name' => 'salgados',
+                'branch_id' => 1,
+            ],
+            [
+
+                'name' => 'japonês',
+                'branch_id' => 1,
+            ],
+            [
+                'name' => 'congelados',
+                'branch_id' => 1,
+            ],
         ];
 
         foreach ($categories as $category){
             DB::table('categories_products')->insert([
-                'description' => $category,
+                'description' => $category['name'],
+                'branch_id' => $category['branch_id'],
             ]);
         }
     }

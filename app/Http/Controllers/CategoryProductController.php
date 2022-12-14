@@ -25,4 +25,9 @@ class CategoryProductController extends Controller
     {
         return $this->categoryProductService->getById($id);
     }
+
+    public function getProductsByBranch($branch_id)
+    {
+        return $this->categoryProductService->getProductsByBranch($branch_id);
+    }
 }
