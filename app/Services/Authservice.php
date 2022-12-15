@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Models\Company;
+use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -42,12 +44,28 @@ class AuthService
         ], 200);
     }
 
+    public function logout(Request $request)
+    {
+        try {
+            $request->user('api')->token()->delete();
+
+            return response()->json([
+                'message' => 'logout success!',
+            ]);
+        } catch(Exception $e){
+            return response()->json([
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+
     public function getUser()
     {
         $company = auth()->guard('api')->user();
 
-        return response()->json([
-            'company' => $company,
-        ], 200);
+        return response()->json(
+            $company,
+            200
+        );
     }
 }
