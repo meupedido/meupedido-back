@@ -14,4 +14,9 @@ class CategoryProduct extends Model
     protected $fillable = [
         'description',
     ];
+
+    
+    public function branch(){
+        return $this->belongsTo(LineOfBusiness::class);
+    }
 }

@@ -24,7 +24,9 @@ class CompanyRepository implements CompanyRepositoryInterface{
     {
         return $this->model->where('id', $id)
         ->with('address')
-        ->with('products')
+        ->with(['products' => function ($query) {
+            $query->orderby('on_sale', 'desc');
+        }])
         ->first();
     }
 
@@ -37,5 +39,29 @@ class CompanyRepository implements CompanyRepositoryInterface{
         ->distinct()
         ->where('companies.id', $id)
         ->get();
+    }
+
+    public function createCompany(array $body)
+    {
+        return $this->model->create($body);
+    }
+
+    public function updateCompany($id, $body)
+    {
+        $company = $this->model->find($id);
+
+        return $company->update([
+            'name' => $body['name'],
+            'email' => $body['email'],
+            'phone' => $body['phone'],
+            'whatsapp' => $body['whatsapp'],
+            'payment_methods' => $body['payment_methods'],
+            'minimum_order' => $body['minimum_order'],
+            'delivery_fee' => $body['delivery_fee'],
+            'status' => $body['status'],
+            'opening_hours' => $body['opening_hours'],
+            'closing_hours' => $body['closing_hours'],
+            'branch_id' => $body['branch_id'],
+        ]);
     }
 }

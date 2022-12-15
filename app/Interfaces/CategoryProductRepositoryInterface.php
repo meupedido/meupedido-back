@@ -6,4 +6,5 @@ interface CategoryProductRepositoryInterface
 {
     public function getAll();
     public function getById(int $id);
+    public function getProductsByBranch(int $branch_id);
 }

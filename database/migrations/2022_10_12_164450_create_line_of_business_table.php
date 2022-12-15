@@ -13,16 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('companies_address', function (Blueprint $table) {
+        Schema::create('line_of_business', function (Blueprint $table) {
             $table->id();
-            $table->text('street');
-            $table->text('number');
-            $table->text('district');
-            $table->text('city');
-            $table->text('state');
-            $table->text('cep');
-            $table->text('point_of_reference')->nullable();
-            $table->foreignId('company_id')->constrained('companies');
+            $table->text('name');
             $table->timestamps();
         });
     }
@@ -34,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies_address');
+        Schema::dropIfExists('line_of_business');
     }
 };

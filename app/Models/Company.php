@@ -22,6 +22,7 @@ class Company extends Authenticatable
         'status',
         'opening_hours',
         'closing_hours',
+        'branch_id',
     ];
 
     public function address()

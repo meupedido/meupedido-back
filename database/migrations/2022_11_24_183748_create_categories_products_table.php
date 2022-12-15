@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('categories_products', function (Blueprint $table) {
             $table->id();
             $table->text('description');
+            $table->foreignId('branch_id')->constrained('line_of_business');
             $table->timestamps();
         });
     }

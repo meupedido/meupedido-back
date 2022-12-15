@@ -22,4 +22,9 @@ class CategoryProductService
     {
         return $this->repository->getById($id);
     }
+
+    public function getProductsByBranch($branch_id)
+    {
+        return $this->repository->getProductsByBranch($branch_id);
+    }
 }
