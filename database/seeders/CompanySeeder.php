@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class CompanySeeder extends Seeder
 {
@@ -19,9 +20,9 @@ class CompanySeeder extends Seeder
     public function run()
     {
         Company::factory()->count(2)->create([
-            'payment_methods' => 'dinheiro, pix, cartao',
             'opening_hours' => Carbon::createFromTimeString('18:00:00'),
             'closing_hours' => Carbon::createFromTimeString('23:00:00'),
+            'password' => '1234',
         ])->each( function ($company) {
             CompanyAddress::factory()->create([
                 'company_id' => $company->id,
@@ -29,6 +30,17 @@ class CompanySeeder extends Seeder
             Product::factory()->count(2)->create([
                 'company_id' => $company->id,
                 'category_id' => $company->id,
+            ]);
+        });
+
+        Company::factory()->create([
+            'email' => "gil@gmail.com",
+            'opening_hours' => Carbon::createFromTimeString('18:00:00'),
+            'closing_hours' => Carbon::createFromTimeString('23:00:00'),
+            'password' => '1234',
+        ])->each( function ($company) {
+            CompanyAddress::factory()->create([
+                'company_id' => $company->id,
             ]);
         });
     }

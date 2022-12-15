@@ -35,6 +35,7 @@ class StoreCompanyRequest extends FormRequest
             'delivery_fee' => ['required'],
             'opening_hours' => ['required'],
             'closing_hours' => ['required'],
+            'password' => ['required'],
             'branch_id' => ['required'],
             'street' => ['required'],
             'number' => ['required'],
@@ -42,6 +43,7 @@ class StoreCompanyRequest extends FormRequest
             'city' => ['required'],
             'state' => ['required'],
             'cep' => ['required'],
+            'point_of_reference' => ['nullable'],
         ];
     }
 
@@ -67,6 +69,7 @@ class StoreCompanyRequest extends FormRequest
             'delivery_fee.required' => 'Taxa de entrega é obrigatória',
             'opening_hours.required' => 'Horário de abertura é obrigatório',
             'closing_hours.required' => 'Horário de fechamento é obrigatório',
+            'password.required' => 'Senha é obrigatória',
             'street.required' => 'Rua é obrigatória',
             'number.required' => 'Número do estabelecimento é obrigatório',
             'district.required' => 'Bairro é obrigatório',

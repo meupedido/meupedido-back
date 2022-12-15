@@ -19,6 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::prefix('auth')->group(base_path('routes/api-auth.php'));
 Route::prefix('companies')->group(base_path('routes/api-company.php'));
 Route::prefix('products')->group(base_path('routes/api-product.php'));
 Route::prefix('categories-products')->group(base_path('routes/api-category-product.php'));
