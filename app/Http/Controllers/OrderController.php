@@ -13,5 +13,20 @@ class OrderController extends Controller
     {
         $this->order_service = $order_service;
     }
+
+    public function getOrdersById($id)
+    {
+        return $this->order_service->getOrderById($id);
+    }
+
+    public function getOrdersByCompany($company_id)
+    {
+        return $this->order_service->getOrdersByCompany($company_id);
+    }
+
+    public function createOrder(Request $request)
+    {
+        return $this->order_service->createOrder($request);
+    }
     
 }

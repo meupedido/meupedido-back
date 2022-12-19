@@ -23,6 +23,7 @@ Route::prefix('auth')->group(base_path('routes/api-auth.php'));
 Route::prefix('companies')->group(base_path('routes/api-company.php'));
 Route::prefix('products')->group(base_path('routes/api-product.php'));
 Route::prefix('categories-products')->group(base_path('routes/api-category-product.php'));
+Route::prefix('orders')->group(base_path('routes/api-order.php'));
 Route::prefix('fields')->group( function () {
     Route::get('', [LineOfBusinessController::class, 'getAll']);
     Route::get('/{id}', [LineOfBusinessController::class, 'getById']);
