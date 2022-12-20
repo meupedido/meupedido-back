@@ -14,8 +14,10 @@ class Order extends Model
         'amount',
         'payment',
         'value',
+        'delivery_method',
         'address',
         'comments',
+        'status',
         'company_id',
     ];
 }

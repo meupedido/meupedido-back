@@ -19,8 +19,10 @@ return new class extends Migration
             $table->string('amount');
             $table->string('payment');
             $table->float('value');
-            $table->string('address');
+            $table->enum('delivery_method', ['delivery', 'removal']);
+            $table->string('address')->nullable();
             $table->string('comments');
+            $table->enum('status', ['in_preparation', 'ready']);
             $table->foreignId('company_id')->constrained('companies');
             $table->timestamps();
         });
