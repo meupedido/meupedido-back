@@ -28,5 +28,10 @@ class OrderController extends Controller
     {
         return $this->order_service->createOrder($request);
     }
+
+    public function updateOrder($id, Request $request)
+    {
+        return $this->order_service->updateOrder($id, $request);
+    }
     
 }

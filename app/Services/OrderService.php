@@ -48,4 +48,17 @@ class OrderService
             Response::HTTP_OK
         );
     }
+
+    public function updateOrder($order_id, $body)
+    {
+        $this->order_repository->updateOrder($order_id, $body);
+
+        return response()->json(
+            [
+                'message' => 'success',
+                'status_code' => Response::HTTP_OK,
+            ],
+            Response::HTTP_OK
+        );
+    }
 }

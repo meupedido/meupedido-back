@@ -37,4 +37,16 @@ class OrderRepository
             "company_id" => $body->company_id,
         ]);
     }
+    public function updateOrder($order_id, $body)
+    {
+        return $this->model->find($order_id)
+        ->update([
+            "demanded" => $body->demanded,
+            "amount" => $body->amount,
+            "payment" => $body->payment,
+            "value" => $body->value,
+            "address" => $body->address,
+            "comments" => $body->comments,
+        ]);
+    }
 }
