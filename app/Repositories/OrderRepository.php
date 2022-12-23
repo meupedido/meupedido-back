@@ -29,7 +29,7 @@ class OrderRepository
     {
         return $this->model->create([
             "demanded" => $body->demanded,
-            "amount" => $body->amount,
+            "quantity" => $body->amount,
             "payment" => $body->payment,
             "value" => $body->value,
             "address" => $body->address,
@@ -42,7 +42,7 @@ class OrderRepository
         return $this->model->find($order_id)
         ->update([
             "demanded" => $body->demanded,
-            "amount" => $body->amount,
+            "quantity" => $body->amount,
             "payment" => $body->payment,
             "value" => $body->value,
             "address" => $body->address,

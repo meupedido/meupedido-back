@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('demanded');
-            $table->string('amount');
+            $table->integer('quantity');
             $table->string('payment');
             $table->float('value');
             $table->enum('delivery_method', ['delivery', 'removal']);

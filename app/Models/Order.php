@@ -11,7 +11,7 @@ class Order extends Model
 
     protected $fillable = [
         'demanded',
-        'amount',
+        'quantity',
         'payment',
         'value',
         'delivery_method',
