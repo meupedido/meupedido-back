@@ -28,6 +28,10 @@ class Company extends Authenticatable
         'branch_id',
     ];
 
+    protected $hidden = [
+        "password"
+    ];
+
     public function address()
     {
         return $this->hasOne(CompanyAddress::class, 'company_id');
