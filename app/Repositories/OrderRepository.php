@@ -28,6 +28,7 @@ class OrderRepository
     public function createOrder($body)
     {
         return $this->model->create([
+            "order_tag" => $body->order_tag,
             "demanded" => $body->demanded,
             "quantity" => $body->amount,
             "payment" => $body->payment,
@@ -43,6 +44,7 @@ class OrderRepository
     {
         return $this->model->find($order_id)
         ->update([
+            "order_tag" => $body->order_tag,
             "demanded" => $body->demanded,
             "quantity" => $body->amount,
             "payment" => $body->payment,
