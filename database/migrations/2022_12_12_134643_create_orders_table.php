@@ -16,12 +16,13 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('demanded');
+            $table->string('client_name');
             $table->integer('quantity');
             $table->string('payment');
             $table->float('value');
             $table->enum('delivery_method', ['delivery', 'removal']);
             $table->string('address')->nullable();
-            $table->string('comments');
+            $table->string('comments')->nullable();
             $table->enum('status', ['in_preparation', 'ready']);
             $table->foreignId('company_id')->constrained('companies');
             $table->timestamps();

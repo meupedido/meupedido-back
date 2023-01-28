@@ -15,6 +15,7 @@ class Order extends Model
         'payment',
         'value',
         'delivery_method',
+        'client_name',
         'address',
         'comments',
         'status',
