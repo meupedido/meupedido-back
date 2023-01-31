@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('order_tag');
             $table->string('demanded');
             $table->string('client_name');
+            $table->string('client_phone');
             $table->integer('quantity');
             $table->string('payment');
             $table->float('value');
