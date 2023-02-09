@@ -53,6 +53,7 @@ class CompanyRepository implements CompanyRepositoryInterface{
 
         return $company->update([
             'name' => $body['name'],
+            'cnpj' => $body['cnpj'],
             'email' => $body['email'],
             'phone' => $body['phone'],
             'whatsapp' => $body['whatsapp'],

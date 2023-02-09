@@ -49,7 +49,7 @@ class CompanySeeder extends Seeder
             'opening_hours' => Carbon::createFromTimeString('18:00:00'),
             'closing_hours' => Carbon::createFromTimeString('23:00:00'),
             'password' => '1234',
-            'branch_id' => 1,
+            'branch_id' => 1, //doce, salgados, etc
         ])->each( function ($company) {
             CompanyAddress::factory()->create([
                 'company_id' => $company->id,
