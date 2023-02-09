@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class CompanyRepository implements CompanyRepositoryInterface{
-    
+
     private $model;
 
     public function __construct(Company $company)
@@ -64,6 +64,14 @@ class CompanyRepository implements CompanyRepositoryInterface{
             'opening_hours' => $body['opening_hours'],
             'closing_hours' => $body['closing_hours'],
             'branch_id' => $body['branch_id'],
+        ]);
+    }
+
+    public function alterStatus($company_id, $status){
+        $company = $this->model->find($company_id);
+
+        return $company->update([
+            'status' => $status,
         ]);
     }
 }
