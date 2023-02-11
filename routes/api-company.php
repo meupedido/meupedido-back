@@ -9,3 +9,4 @@ Route::get('/categories/{id}', [CompanyController::class, 'getCategories']);
 Route::post('', [CompanyController::class, 'createCompany']);
 Route::put('{id}', [CompanyController::class, 'updateCompany']);
 Route::put('/address/{address_id}', [CompanyController::class, 'updateAddress']);
+Route::put('alter-status/{id}', [CompanyController::class, 'alterStatus']);

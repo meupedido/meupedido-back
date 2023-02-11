@@ -36,6 +36,7 @@ class OrderRepository
             "address" => $body->address,
             "comments" => $body->comments,
             "client_name" => $body->client_name,
+            "client_phone" => $body->client_phone,
             "delivery_method" => $body->delivery_method,
             "company_id" => $body->company_id,
         ]);
@@ -52,6 +53,7 @@ class OrderRepository
             "address" => $body->address,
             "comments" => $body->comments,
             "client_name" => $body->client_name,
+            "client_phone" => $body->client_phone,
             "delivery_method" => $body->delivery_method,
         ]);
     }

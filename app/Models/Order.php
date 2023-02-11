@@ -17,6 +17,7 @@ class Order extends Model
         'value',
         'delivery_method',
         'client_name',
+        'client_phone',
         'address',
         'comments',
         'status',

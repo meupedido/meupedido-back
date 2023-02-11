@@ -10,7 +10,7 @@ class CompanyAddressRepository implements CompanyAddressRepositoryInterface
     private $model;
 
     public function __construct(CompanyAddress $model)
-    {   
+    {
         $this->model = $model;
     }
 

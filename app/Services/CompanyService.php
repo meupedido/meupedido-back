@@ -41,7 +41,7 @@ class CompanyService {
                 'status_code' => Response::HTTP_CREATED,
             ],
             Response::HTTP_CREATED
-        ); 
+        );
     }
 
     public function updateCompany($id, $body)
@@ -59,6 +59,18 @@ class CompanyService {
     public function updateAddress($address_id, $body)
     {
         $this->company_address_repository->updateAddress($address_id, $body);
+
+        return response()->json(
+            [
+                'message' => 'success',
+                'status_code' => Response::HTTP_OK,
+            ],
+            Response::HTTP_OK
+        );
+    }
+
+    public function alterStatus($company_id, $status){
+        $this->companyRepository->alterStatus($company_id, $status);
 
         return response()->json(
             [

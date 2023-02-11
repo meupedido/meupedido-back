@@ -48,4 +48,9 @@ class CompanyController extends Controller
         return $this->companyService->updateAddress($address_id, $request);
     }
 
+
+    public function alterStatus($id, Request $request){
+        return $this->companyService->alterStatus($id, $request->status);
+    }
+
 }

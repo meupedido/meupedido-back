@@ -18,6 +18,7 @@ class CompanyFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'cnpj' => 00000000000000,
             'email' => $this->faker->email(),
             'phone' => $this->faker->phoneNumber(),
             'whatsapp' => $this->faker->phoneNumber(),
