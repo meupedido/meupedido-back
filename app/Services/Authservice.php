@@ -14,7 +14,7 @@ class AuthService
 
     public function __construct (Company $company_model)
     {
-        $this->company_model = $company_model;
+        $this->company_model = $company_model; //
     }
 
     public function login($body)
