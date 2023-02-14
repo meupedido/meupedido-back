@@ -28,9 +28,9 @@ class OrderService
         return response()->json($order);
     }
 
-    public function getOrdersByCompany($company_id)
+    public function getOrdersByCompany($company_id, $request)
     {
-        $orders = $this->order_repository->getOrdersByCompany($company_id);
+        $orders = $this->order_repository->getOrdersByCompany($company_id, $request);
 
         return $orders;
     }
