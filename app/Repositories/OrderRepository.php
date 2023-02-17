@@ -19,10 +19,17 @@ class OrderRepository
         return $this->model->find($id);
     }
 
-    public function getOrdersByCompany($company_id)
+    public function getOrdersByCompany($company_id, $request)
     {
-        return $this->model->where('company_id', $company_id)
+        $result = $this->model->where(function($query) use($company_id, $request) {
+            $query->where('company_id', $company_id);
+            if($request->start_date){
+                $query->whereDate('created_at', '>=', date($request->start_date));
+            }
+        })
         ->get();
+
+        return $result;
     }
 
     public function createOrder($body)

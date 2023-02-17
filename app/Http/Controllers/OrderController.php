@@ -19,9 +19,9 @@ class OrderController extends Controller
         return $this->order_service->getOrderById($id);
     }
 
-    public function getOrdersByCompany($company_id)
+    public function getOrdersByCompany($company_id, Request $request)
     {
-        return $this->order_service->getOrdersByCompany($company_id);
+        return $this->order_service->getOrdersByCompany($company_id, $request);
     }
 
     public function createOrder(Request $request)
@@ -33,5 +33,5 @@ class OrderController extends Controller
     {
         return $this->order_service->updateOrder($id, $request);
     }
-    
+
 }
