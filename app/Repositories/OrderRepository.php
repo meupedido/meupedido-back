@@ -23,8 +23,9 @@ class OrderRepository
     {
         $result = $this->model->where(function($query) use($company_id, $request) {
             $query->where('company_id', $company_id);
-            if($request->start_date){
-                $query->whereDate('created_at', '>=', date($request->start_date));
+            if($request->start_date && $request->finish_date){
+                $query->whereDate('created_at', '>=', date($request->start_date))
+                ->whereDate('created_at', '<=', date($request->finish_date));
             }
         })
         ->get();
