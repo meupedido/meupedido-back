@@ -38,7 +38,7 @@ class OrderRepository
         return $this->model->create([
             "order_tag" => $body->order_tag,
             "demanded" => $body->demanded,
-            "quantity" => $body->amount,
+            "quantity" => $body->quantity,
             "payment" => $body->payment,
             "value" => $body->value,
             "address" => $body->address,
@@ -55,7 +55,7 @@ class OrderRepository
         ->update([
             "order_tag" => $body->order_tag,
             "demanded" => $body->demanded,
-            "quantity" => $body->amount,
+            "quantity" => $body->quantity,
             "payment" => $body->payment,
             "value" => $body->value,
             "address" => $body->address,
