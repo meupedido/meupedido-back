@@ -25,7 +25,6 @@ return new class extends Migration
             $table->enum('delivery_method', ['delivery', 'removal']);
             $table->string('address')->nullable();
             $table->string('comments')->nullable();
-            $table->string('file_name')->nullable();
             $table->enum('status', ['in_preparation', 'ready']);
             $table->foreignId('company_id')->constrained('companies');
             $table->timestamps();

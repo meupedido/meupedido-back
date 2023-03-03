@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Response;
+use Ramsey\Uuid\Uuid;
 
 class ProductService
 {
@@ -11,12 +12,21 @@ class ProductService
 
     public function __construct(ProductRepository $productRepository)
     {
-      $this->productRepository = $productRepository;  
+      $this->productRepository = $productRepository;
     }
 
     public function getProducts($company_id)
     {
-        return $this->productRepository->getProducts($company_id);
+        $products = $this->productRepository->getProducts($company_id);
+
+        foreach($products as $product){
+            $file_path = public_path('storage/images_products/' . $product->path_img);
+            $base64 = "data:image/png;base64,".base64_encode(file_get_contents($file_path));
+
+            $product->imgBase64 = $base64;
+        }
+
+        return $products;
     }
 
     public function getProductById($product_id)
@@ -49,12 +59,20 @@ class ProductService
         $filter_products = array_filter(json_decode($products), function ($product) use ($category_id) {
             return $product->category_id == $category_id;
         });
-        
+
         return $filter_products;
     }
 
     public function createProduct($company_id, $body){
-        $result = $this->productRepository->createProduct($company_id, $body);
+        if ($body->hasFile('image')) {
+            $file = $body->file('image');
+            $extension = $file->extension();
+            $file_name = Uuid::uuid4() . '.' . $extension;
+
+            $body->image->storeAs('public/images_products', $file_name);
+        };
+
+        $result = $this->productRepository->createProduct($company_id, $body,$file_name);
 
         return response()->json(
             [

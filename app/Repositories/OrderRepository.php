@@ -17,11 +17,6 @@ class OrderRepository
     {
         $order = $this->model->find($id);
 
-        $file_path = public_path('storage/images_orders/' . $order->file_name);
-        $image = "data:image/png;base64,".base64_encode(file_get_contents($file_path));
-
-        $order->base64 = $image;
-
         return $order;
     }
 
@@ -36,17 +31,10 @@ class OrderRepository
         })
         ->get();
 
-        foreach($orders as $order){
-            $file_path = public_path('storage/images_orders/' . $order->file_name);
-            $base64 = "data:image/png;base64,".base64_encode(file_get_contents($file_path));
-
-            $order->imgBase64 = $base64;
-        }
-
         return $orders;
     }
 
-    public function createOrder($body, string $file_name = null)
+    public function createOrder($body)
     {
         return $this->model->create([
             "order_tag" => $body->order_tag,
@@ -60,7 +48,6 @@ class OrderRepository
             "client_phone" => $body->client_phone,
             "delivery_method" => $body->delivery_method,
             "company_id" => $body->company_id,
-            "file_name" => $file_name,
         ]);
     }
     public function updateOrder($order_id, $body)
