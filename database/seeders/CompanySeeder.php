@@ -19,19 +19,6 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
-        // Company::factory()->count(2)->create([
-        //     'opening_hours' => Carbon::createFromTimeString('18:00:00'),
-        //     'closing_hours' => Carbon::createFromTimeString('23:00:00'),
-        //     'password' => '1234',
-        // ])->each( function ($company) {
-        //     CompanyAddress::factory()->create([
-        //         'company_id' => $company->id,
-        //     ]);
-        //     Product::factory()->count(20)->create([
-        //         'company_id' => $company->id,
-        //         'category_id' => $company->id,
-        //     ]);
-        // });
 
         Company::factory()->create([
             'email' => "gil@gmail.com",
@@ -40,6 +27,9 @@ class CompanySeeder extends Seeder
             'password' => '1234',
         ])->each( function ($company) {
             CompanyAddress::factory()->create([
+                'company_id' => $company->id,
+            ]);
+            Product::factory()->create([
                 'company_id' => $company->id,
             ]);
         });
@@ -52,6 +42,9 @@ class CompanySeeder extends Seeder
             'branch_id' => 1, //doce, salgados, etc
         ])->each( function ($company) {
             CompanyAddress::factory()->create([
+                'company_id' => $company->id,
+            ]);
+            Product::factory()->create([
                 'company_id' => $company->id,
             ]);
         });
