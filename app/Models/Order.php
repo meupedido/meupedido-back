@@ -22,5 +22,6 @@ class Order extends Model
         'comments',
         'status',
         'company_id',
+        'file_name',
     ];
 }

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\OrderRepository;
 use Illuminate\Http\Response;
+use Ramsey\Uuid\Uuid;
 
 class OrderService
 {
@@ -37,7 +38,15 @@ class OrderService
 
     public function createOrder($body)
     {
-        $order = $this->order_repository->createOrder($body);
+        if ($body->hasFile('image')) {
+            $file = $body->file('image');
+            $extension = $file->extension();
+            $file_name = Uuid::uuid4() . '.' . $extension;
+
+            $body->image->storeAs('public/images_orders', $file_name);
+        };
+
+        $order = $this->order_repository->createOrder($body, $file_name);
 
         return response()->json(
             [
@@ -60,5 +69,12 @@ class OrderService
             ],
             Response::HTTP_OK
         );
+    }
+
+    public function getBase64Img($order){
+        $file_path = public_path('storage/images_orders/' . $order->file_name);
+        $base64 = "data:image/png;base64,".base64_encode(file_get_contents($file_path));
+
+        return $base64;
     }
 }
