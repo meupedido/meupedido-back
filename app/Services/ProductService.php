@@ -64,6 +64,7 @@ class ProductService
     }
 
     public function createProduct($company_id, $body){
+        $file_name = '';
         if ($body->hasFile('image')) {
             $file = $body->file('image');
             $extension = $file->extension();
@@ -72,7 +73,7 @@ class ProductService
             $body->image->storeAs('public/images_products', $file_name);
         };
 
-        $result = $this->productRepository->createProduct($company_id, $body,$file_name);
+        $result = $this->productRepository->createProduct($company_id, $body, $file_name);
 
         return response()->json(
             [

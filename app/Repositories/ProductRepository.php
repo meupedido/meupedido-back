@@ -53,7 +53,7 @@ class ProductRepository implements ProductRepositoryInterface
         return $products;
     }
 
-    public function createProduct(int $company_id, $body, string $file_name)
+    public function createProduct(int $company_id, $body, string $file_name = null)
     {
         $product = $this->model->create([
             'name' => $body['name'],
