@@ -21,6 +21,7 @@ class ProductService
 
         foreach($products as $product){
             $file_path = public_path('storage/images_products/' . $product->path_img);
+            
             $base64 = "data:image/png;base64,".base64_encode(file_get_contents($file_path));
 
             $product->imgBase64 = $base64;

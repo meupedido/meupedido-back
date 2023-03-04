@@ -20,7 +20,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->word(),
             'description' => $this->faker->sentence(),
             'observation' => $this->faker->sentence(),
-            'path_img' => 'img_deafult.png',
+            'path_img' => 'img_default.png',
             'price' => $this->faker->randomDigit(),
             'on_sale' => 0,
             'is_avaliable' => 0,
