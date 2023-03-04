@@ -21,7 +21,7 @@ class ProductService
 
         foreach($products as $product){
             $file_path = public_path('storage/images_products/' . $product->path_img);
-            
+
             $base64 = "data:image/png;base64,".base64_encode(file_get_contents($file_path));
 
             $product->imgBase64 = $base64;
@@ -71,7 +71,7 @@ class ProductService
             $extension = $file->extension();
             $file_name = Uuid::uuid4() . '.' . $extension;
 
-            $body->image->storeAs('public/images_products', $file_name);
+            $body->image->storeAs('storage/app/public/images_products/', $file_name);
         };
 
         $result = $this->productRepository->createProduct($company_id, $body, $file_name);
