@@ -59,7 +59,7 @@ class ProductRepository implements ProductRepositoryInterface
             'name' => $body['name'],
             'description' => $body['description'],
             'observation' => $body['observation'],
-            'path_img' => $file_name,
+            $file_name ? `'path_img' => $file_name` : '',
             'price' => $body['price'],
             'on_sale' => $body['on_sale'],
             'is_avaliable' => $body['is_avaliable'],
