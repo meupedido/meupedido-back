@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\OrderRepositoryInterface;
 use App\Models\Order;
 
 class OrderRepository
@@ -16,13 +15,23 @@ class OrderRepository
 
     public function getOrderById($id)
     {
-        return $this->model->find($id);
+        $order = $this->model->find($id);
+
+        return $order;
     }
 
-    public function getOrdersByCompany($company_id)
+    public function getOrdersByCompany($company_id, $request)
     {
-        return $this->model->where('company_id', $company_id)
+        $orders = $this->model->where(function($query) use($company_id, $request) {
+            $query->where('company_id', $company_id);
+            if($request->start_date && $request->finish_date){
+                $query->whereDate('created_at', '>=', date($request->start_date))
+                ->whereDate('created_at', '<=', date($request->finish_date));
+            }
+        })
         ->get();
+
+        return $orders;
     }
 
     public function createOrder($body)
@@ -30,7 +39,7 @@ class OrderRepository
         return $this->model->create([
             "order_tag" => $body->order_tag,
             "demanded" => $body->demanded,
-            "quantity" => $body->amount,
+            "quantity" => $body->quantity,
             "payment" => $body->payment,
             "value" => $body->value,
             "address" => $body->address,
@@ -47,7 +56,7 @@ class OrderRepository
         ->update([
             "order_tag" => $body->order_tag,
             "demanded" => $body->demanded,
-            "quantity" => $body->amount,
+            "quantity" => $body->quantity,
             "payment" => $body->payment,
             "value" => $body->value,
             "address" => $body->address,

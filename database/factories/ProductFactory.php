@@ -20,8 +20,11 @@ class ProductFactory extends Factory
             'name' => $this->faker->word(),
             'description' => $this->faker->sentence(),
             'observation' => $this->faker->sentence(),
-            'path_img' => 'https://via.placeholder.com/250x250',
+            'path_img' => 'img_default.png',
             'price' => $this->faker->randomDigit(),
+            'on_sale' => 0,
+            'is_avaliable' => 0,
+            'category_id' => $this->faker->numberBetween(1, 4),
         ];
     }
 }

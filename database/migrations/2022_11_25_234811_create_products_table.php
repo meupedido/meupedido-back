@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('name');
             $table->text('description');
             $table->text('observation');
-            $table->text('path_img');
+            $table->string('path_img')->default('img_default.png');
             $table->float('price');
             $table->boolean('on_sale')->default(false);
             $table->boolean('is_avaliable')->default(true);
