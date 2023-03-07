@@ -22,8 +22,8 @@ class ProductFactory extends Factory
             'observation' => $this->faker->sentence(),
             'path_img' => 'img_default.png',
             'price' => $this->faker->randomDigit(),
-            'on_sale' => 0,
-            'is_avaliable' => 0,
+            'on_sale' => 1,
+            'is_avaliable' => 1,
             'category_id' => $this->faker->numberBetween(1, 4),
         ];
     }
