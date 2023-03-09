@@ -64,15 +64,13 @@ class ProductService
         return $filter_products;
     }
 
-    public function createProduct($company_id, $body){        
-        $file_name = '';
-        if ($body->hasFile('image')) {
-            $file = $body->file('image');
-            $extension = $file->extension();
-            $file_name = Uuid::uuid4() . '.' . $extension;
+    public function createProduct($company_id, $body){
+        $file = $body->image;
+        $extension = $file->extension();
+        $file_name = Uuid::uuid4() . '.' . $extension;
 
-            $body->image->storeAs('public/images_products', $file_name);
-        };
+        $body->image->storeAs('public/images_products', $file_name);
+
 
         $result = $this->productRepository->createProduct($company_id, $body, $file_name);
 
