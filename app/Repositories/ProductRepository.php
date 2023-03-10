@@ -70,19 +70,23 @@ class ProductRepository implements ProductRepositoryInterface
         return $product;
     }
 
-    public function updateProduct(int $id, $body)
+    public function updateProduct(int $id, $body, string $file_name = null)
     {
         $product = $this->model->findOrFail($id);
 
-        return $product->update([
+        $product->update([
             'name' => $body['name'],
             'description' => $body['description'],
             'observation' => $body['observation'],
-            'path_img' => $body['path_img'],
+            'path_img' => $file_name,
             'price' => $body['price'],
             'on_sale' => $body['on_sale'],
             'is_avaliable' => $body['is_avaliable'],
+            'company_id' => $body['company_id'],
+            'category_id' => $body['category_id'],
         ]);
+
+        return $product;
 
     }
 

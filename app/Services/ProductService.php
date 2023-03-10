@@ -71,7 +71,6 @@ class ProductService
 
         $body->image->storeAs('public/images_products', $file_name);
 
-
         $result = $this->productRepository->createProduct($company_id, $body, $file_name);
 
         return response()->json(
@@ -85,6 +84,12 @@ class ProductService
 
     public function updateProduct($id, $body)
     {
+        $file = $body->image;
+        $extension = $file->extension();
+        $file_name = Uuid::uuid4() . '.' . $extension;
+
+        $body->image->storeAs('public/images_products', $file_name);
+
         $product = $this->productRepository->getProductById($id, $body);
 
         if(!$product){
