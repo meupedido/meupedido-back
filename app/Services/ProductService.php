@@ -102,7 +102,7 @@ class ProductService
             );
         }
 
-        $this->productRepository->updateProduct($id, $body);
+        $this->productRepository->updateProduct($id, $body, $file_name);
 
         return response()->json(
             [
