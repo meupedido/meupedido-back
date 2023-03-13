@@ -46,7 +46,7 @@ class CompanySeeder extends Seeder
             CompanyAddress::factory()->create([
                 'company_id' => $company->id,
             ]);
-            Product::factory()->create([
+            Product::factory(5)->create([
                 'company_id' => $company->id,
             ]);
         });
